@@ -2,6 +2,7 @@ import 'package:currency_convertor/constants/dimension.dart';
 import 'package:currency_convertor/widgets/convert_btn.dart';
 import 'package:currency_convertor/widgets/convert_text_field.dart';
 import 'package:currency_convertor/widgets/numpad.dart';
+import 'package:currency_convertor/widgets/round_converting_btn.dart';
 import 'package:flutter/material.dart';
 
 enum ActiveField {
@@ -35,18 +36,29 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: Dimension.heightFactor*8,
         ),
-        ConvertTextField(textFieldcontroller: fromtextController,
-        onTap: () {
-          setState(() {
-            activeField = ActiveField.from;
-          });
-        },),
-        ConvertTextField(textFieldcontroller: totextController,
-        onTap: () {
-          setState(() {
-            activeField = ActiveField.to;
-          });
-        },),
+        Stack(
+          children:[ 
+            Column(
+              children: [
+                ConvertTextField(textFieldcontroller: fromtextController,
+                  onTap: () {
+                    setState(() {
+                    activeField = ActiveField.from;
+                  });
+                },),
+              ConvertTextField(textFieldcontroller: totextController,
+                onTap: () {
+                  setState(() {
+                  activeField = ActiveField.to;
+                  });
+              },),
+              ],
+            ),
+            Positioned(
+              top: Dimension.heightFactor*95,
+              left: Dimension.widthFactor*203,
+              child: RoundConvertingBtn())
+        ]),
         SizedBox(
           height: Dimension.heightFactor*24,
         ),
