@@ -1,7 +1,6 @@
 import 'package:currency_convertor/constants/colors.dart';
 import 'package:currency_convertor/constants/dimension.dart';
 import 'package:currency_convertor/home_page.dart';
-import 'package:currency_convertor/widgets/convert_Text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

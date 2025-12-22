@@ -1,15 +1,23 @@
 import 'package:currency_convertor/constants/colors.dart';
 import 'package:currency_convertor/constants/dimension.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ConvertTextField extends StatefulWidget {
-  const ConvertTextField({super.key});
+  final TextEditingController textFieldcontroller;
+  final VoidCallback onTap;
+  const ConvertTextField({
+    super.key,
+    required this.textFieldcontroller,
+    required this.onTap});
 
   @override
   State<ConvertTextField> createState() => _ConvertTextFieldState();
 }
 
 class _ConvertTextFieldState extends State<ConvertTextField> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +41,9 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
                 borderRadius: BorderRadius.all(Radius.circular(2))
               ),
               child: TextField(
-                  keyboardType: TextInputType.number,
+                  onTap: widget.onTap,
+                  controller: widget.textFieldcontroller,
+                  keyboardType: TextInputType.none,
                   style: TextStyle(
                     fontSize: Dimension.heightFactor*20,
                     color: AppColors.textFieldColor,

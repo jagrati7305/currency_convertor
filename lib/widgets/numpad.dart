@@ -4,7 +4,9 @@ import 'package:currency_convertor/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
 class Numpad extends StatelessWidget {
-  const Numpad({super.key});
+  final TextEditingController numpadController;
+  const Numpad({super.key,
+  required this.numpadController});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class Numpad extends StatelessWidget {
       height: Dimension.heightFactor*410,
       decoration: BoxDecoration(
         color: AppColors.mainPurpleColor,
-        borderRadius: BorderRadius.all(Radius.circular(4))
+        borderRadius: BorderRadius.all(Radius.circular(8))
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -21,33 +23,33 @@ class Numpad extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Buttons(val: 1,),
-              Buttons(val: 2,),
-              Buttons(val: 3,),
+              Buttons(val: '1',buttonController: numpadController,),
+              Buttons(val: '2',buttonController: numpadController,),
+              Buttons(val: '3',buttonController: numpadController,),
             ],         
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Buttons(val: 4,),
-              Buttons(val: 5,),
-              Buttons(val: 6,),
+              Buttons(val: '4',buttonController: numpadController,),
+              Buttons(val: '5',buttonController: numpadController,),
+              Buttons(val: '6',buttonController: numpadController,),
             ],         
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Buttons(val: 7,),
-              Buttons(val: 8,),
-              Buttons(val: 9,),
+              Buttons(val: '7',buttonController: numpadController,),
+              Buttons(val: '8',buttonController: numpadController,),
+              Buttons(val: '9',buttonController: numpadController,),
             ],         
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Buttons(icon: Icons.circle,),
-              Buttons(val: 0,),
-              Buttons(icon: Icons.backspace,),
+              Buttons(val:'Decimal',icon:Icons.circle,iconSize: 10,buttonController: numpadController,),
+              Buttons(val: '0',buttonController: numpadController,),
+              Buttons(val: 'BackSpace',icon: Icons.backspace,buttonController: numpadController,),
             ],         
           ),
         ],
