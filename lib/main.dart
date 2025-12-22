@@ -1,3 +1,7 @@
+import 'package:currency_convertor/constants/colors.dart';
+import 'package:currency_convertor/constants/dimension.dart';
+import 'package:currency_convertor/home_page.dart';
+import 'package:currency_convertor/widgets/convert_Text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,17 +14,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Dimension.screenWidth = MediaQuery.of(context).size.width;
+    Dimension.screenHeight = MediaQuery.of(context).size.height;
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Curvertor',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
       home: Scaffold(
-        appBar: AppBar(title: Text('Curvertor'),),
-        body: Center(
-          child: Text('My First App'),
-        ),
+        appBar: AppBar(
+          title: Text(
+          'CURVERTOR',
+          style: TextStyle(
+            color: AppColors.orangeColor,
+            fontWeight: FontWeight.w700,
+            fontSize: Dimension.heightFactor*24),
+          ),
+          centerTitle: true,
+          backgroundColor: AppColors.mainPurpleColor,
+          ),
+        body:HomePage(),
+        backgroundColor: AppColors.backgroundColor,
       )
     );
   }
