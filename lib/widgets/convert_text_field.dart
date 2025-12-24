@@ -1,7 +1,7 @@
 import 'package:currency_convertor/constants/colors.dart';
 import 'package:currency_convertor/constants/dimension.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 class ConvertTextField extends StatefulWidget {
   final TextEditingController textFieldcontroller;
