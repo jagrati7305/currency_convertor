@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:currency_convertor/constants/colors.dart';
 import 'package:currency_convertor/constants/dimension.dart';
-import 'package:currency_convertor/curvertor_main_page.dart';
+import 'package:currency_convertor/functions/fetch_currencies.dart';
+import 'package:currency_convertor/models/currency_name.dart';
+import 'package:currency_convertor/screen/curvertor_main_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,19 +14,23 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
+  late final Future<CurrencyNames> currencies;
+  
   @override
   void initState() {
     super.initState();
+      
+     currencies = fetchCurrencies();
 
     Timer(Duration(seconds: 4), (){
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context)=> CurvertorMainPage(),
+            builder: (context)=> CurvertorMainPage(currenciesFuture:  currencies),
           )
         );
     });
+  
   }
   @override
   Widget build(BuildContext context) {

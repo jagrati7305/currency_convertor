@@ -1,5 +1,5 @@
 import 'package:currency_convertor/constants/dimension.dart';
-import 'package:currency_convertor/splash_screen.dart';
+import 'package:currency_convertor/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

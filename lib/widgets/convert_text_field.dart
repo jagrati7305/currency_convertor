@@ -1,15 +1,20 @@
 import 'package:currency_convertor/constants/colors.dart';
 import 'package:currency_convertor/constants/dimension.dart';
+import 'package:currency_convertor/models/currency_name.dart';
+import 'package:currency_convertor/widgets/dropdown.dart';
 import 'package:flutter/material.dart';
 
 
 class ConvertTextField extends StatefulWidget {
   final TextEditingController textFieldcontroller;
   final VoidCallback onTap;
+  final CurrencyNames dropdownCurrencies;
+
   const ConvertTextField({
     super.key,
     required this.textFieldcontroller,
-    required this.onTap});
+    required this.onTap,
+    required this.dropdownCurrencies});
 
   @override
   State<ConvertTextField> createState() => _ConvertTextFieldState();
@@ -21,7 +26,6 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //padding: EdgeInsets.fromLTRB(24, 24, 24, 24),
       margin: EdgeInsets.only(left: Dimension.widthFactor*32,right: Dimension.widthFactor*32,top: Dimension.heightFactor*24),
       height: Dimension.heightFactor*92,
       width: Dimension.widthFactor*338,
@@ -52,11 +56,11 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
                   decoration: InputDecoration(
                     hintText: 'Value',
                     hintStyle: TextStyle(
-                      fontSize: Dimension.heightFactor*20,
+                      fontSize: 16,
                       color: AppColors.textFieldColor,
                       fontWeight: FontWeight.w500
                     ),
-                    contentPadding:EdgeInsets.fromLTRB(Dimension.widthFactor*16, 0, 16, 0),
+                    contentPadding:EdgeInsets.fromLTRB(8, 0, 16, 0),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(2)),
                       borderSide: BorderSide(
@@ -75,10 +79,12 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
           Container(
             height: Dimension.heightFactor*44,
             width: Dimension.widthFactor*97,
+            padding: EdgeInsets.only(left: 16,right: 16),
             decoration: BoxDecoration(
               color: AppColors.backgroundColor,
               borderRadius: BorderRadius.all(Radius.circular(2))
             ),
+            child: Dropdown(currencies:widget.dropdownCurrencies),
           )
         ],
       ),

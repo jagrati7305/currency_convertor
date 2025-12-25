@@ -1,4 +1,5 @@
 import 'package:currency_convertor/constants/dimension.dart';
+import 'package:currency_convertor/models/currency_name.dart';
 import 'package:currency_convertor/widgets/convert_btn.dart';
 import 'package:currency_convertor/widgets/convert_text_field.dart';
 import 'package:currency_convertor/widgets/numpad.dart';
@@ -11,7 +12,10 @@ enum ActiveField {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final CurrencyNames allcurrencies;
+  const HomePage({
+    super.key,
+    required this.allcurrencies});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -45,13 +49,13 @@ class _HomePageState extends State<HomePage> {
                     setState(() {
                     activeField = ActiveField.from;
                   });
-                },),
+                },dropdownCurrencies:widget.allcurrencies),
               ConvertTextField(textFieldcontroller: totextController,
                 onTap: () {
                   setState(() {
                   activeField = ActiveField.to;
                   });
-              },),
+              },dropdownCurrencies:widget.allcurrencies,),
               ],
             ),
             Positioned(
