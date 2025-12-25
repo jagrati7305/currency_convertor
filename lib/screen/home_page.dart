@@ -1,5 +1,6 @@
 import 'package:currency_convertor/constants/dimension.dart';
 import 'package:currency_convertor/models/currency_name.dart';
+import 'package:currency_convertor/models/currency_rate.dart';
 import 'package:currency_convertor/widgets/convert_btn.dart';
 import 'package:currency_convertor/widgets/convert_text_field.dart';
 import 'package:currency_convertor/widgets/numpad.dart';
@@ -13,9 +14,11 @@ enum ActiveField {
 
 class HomePage extends StatefulWidget {
   final CurrencyNames allcurrencies;
+  final ExchangeRateModel rateChange;
   const HomePage({
     super.key,
-    required this.allcurrencies});
+    required this.allcurrencies,
+    required this.rateChange});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -66,7 +69,7 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: Dimension.heightFactor*24,
         ),
-        ConvertBtn(),
+        ConvertBtn(rateChangedata:widget.rateChange,),
          SizedBox(
           height: Dimension.heightFactor*24,
         ),
