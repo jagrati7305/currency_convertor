@@ -21,9 +21,7 @@ class _ConvertBtnState extends State<ConvertBtn> {
     return SizedBox(
       width: Dimension.widthFactor*338,
       height: Dimension.heightFactor*46,
-      child: ElevatedButton(onPressed: (){
-            widget.onTap;
-          }, 
+      child: ElevatedButton(onPressed: widget.onTap,
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.mainPurpleColor,
             shape: RoundedRectangleBorder(

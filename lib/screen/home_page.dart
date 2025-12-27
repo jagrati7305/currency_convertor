@@ -15,6 +15,7 @@ enum ActiveField {
 class HomePage extends StatefulWidget {
   final CurrencyNames allcurrencies;
   final ExchangeRateModel rateChange;
+
   const HomePage({
     super.key,
     required this.allcurrencies,
@@ -27,6 +28,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final TextEditingController fromtextController = TextEditingController();
   final TextEditingController totextController = TextEditingController();
+  String fromCountry='INR';
+  String toCountry = 'INR';
   ActiveField activeField = ActiveField.from;
 
 
@@ -50,24 +53,42 @@ class _HomePageState extends State<HomePage> {
                     setState(() {
                     activeField = ActiveField.from;
                   });
-                },dropdownCurrencies:widget.allcurrencies),
+                },
+                dropdownCurrencies:widget.allcurrencies,
+                label: 'From',
+                dropdownLabel: fromCountry,
+                onCurrencyChanged: (value) {
+                  setState(() {
+                  fromCountry = value;
+                });}),
               ConvertTextField(textFieldcontroller: totextController,
                 onTap: () {
                   setState(() {
                   activeField = ActiveField.to;
                   });
-              },dropdownCurrencies:widget.allcurrencies,),
+              },dropdownCurrencies:widget.allcurrencies,
+              label: 'To',
+              dropdownLabel: toCountry,
+              onCurrencyChanged: (value) {
+                  setState(() {
+                  toCountry = value;
+                });}),
               ],
             ),
+
         SizedBox(
           height: Dimension.heightFactor*24,
         ),
         ConvertBtn(rateChangedata:widget.rateChange,onTap: (){
           setState(() {
+            if(fromtextController.text.isEmpty){
+                totextController.text = "0.0000";
+                return;
+            }     
             totextController.text = conversion(
               widget.rateChange,
-              'INR',
-              'USD',
+              fromCountry,
+              toCountry,
             fromtextController.text,
         );
         });

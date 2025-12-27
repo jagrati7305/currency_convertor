@@ -4,26 +4,40 @@ import 'package:flutter/material.dart';
 
 class Dropdown extends StatefulWidget {
   final CurrencyNames currencies;
+  final String selectedCountry;
+  final ValueChanged<String> onChanged;
+
   const Dropdown({super.key,
-  required this.currencies});
+  required this.currencies,
+  required this.selectedCountry,
+  required this.onChanged});
 
   @override
   State<Dropdown> createState() => _DropdownState();
 }
 
 class _DropdownState extends State<Dropdown> {
-  String dropDownValue = 'INR';
+  late String dropdownValue;
+  
+  @override 
+    void initState(){
+      super.initState();
+      dropdownValue = widget.selectedCountry;
+    }
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-          value: dropDownValue,
+          value: dropdownValue,
           icon: const Icon(Icons.arrow_drop_down_rounded,),
           iconEnabledColor: AppColors.textFieldColor,
           iconSize: 24,
           
-          onChanged: (String? newValue){
+          onChanged: (String? value){
+            if (value != null) {
+             widget.onChanged(value);
+            }
             setState(() {
-              dropDownValue=newValue!;
+              dropdownValue=value!;
             });
           },
           items: widget.currencies.names.entries.map((entry) {
