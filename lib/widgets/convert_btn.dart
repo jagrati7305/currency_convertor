@@ -26,7 +26,9 @@ class _ConvertBtnState extends State<ConvertBtn> {
             backgroundColor: AppColors.mainPurpleColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.all(Radius.circular(4))
-            )
+            ),
+            elevation: 4,
+            shadowColor: Color.fromRGBO(0, 0, 0, 0.4)
           ),
           child: Text('Convert',
               style: TextStyle(

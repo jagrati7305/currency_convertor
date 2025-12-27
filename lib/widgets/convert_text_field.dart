@@ -43,7 +43,15 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
       width: Dimension.widthFactor*338,
       decoration: BoxDecoration(
         color: AppColors.mainPurpleColor,
-        borderRadius: BorderRadius.all(Radius.circular(4))
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        boxShadow:[
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.4),
+            blurRadius: 8,
+            spreadRadius: -5,
+            offset: Offset(0, 4)
+          )
+        ]
       ),
       child: Column(
        crossAxisAlignment: CrossAxisAlignment.start,

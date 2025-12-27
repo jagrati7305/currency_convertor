@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
             
             children: [
               SizedBox(
-                height: Dimension.screenHeight/2.2,
+                height: Dimension.screenHeight/2.5,
               ),
               Container(
                 margin: EdgeInsets.only(bottom: Dimension.heightFactor*4),
@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               SizedBox(
-                height: Dimension.screenHeight/3,
+                height: Dimension.screenHeight/2.8,
               ),
               Column(
                   mainAxisAlignment: MainAxisAlignment.center,

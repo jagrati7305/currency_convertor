@@ -58,6 +58,8 @@ class _CurvertorMainPageState extends State<CurvertorMainPage> {
               ),
               centerTitle: true,
               backgroundColor: AppColors.mainPurpleColor,
+              elevation: 2,
+              shadowColor: Color.fromRGBO(0, 0, 0, 0.25),
           ),
           body:HomePage(allcurrencies: currencies,rateChange: rate,),
         backgroundColor: AppColors.backgroundColor,

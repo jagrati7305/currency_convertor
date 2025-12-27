@@ -26,31 +26,34 @@ class _DropdownState extends State<Dropdown> {
     }
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-          value: dropdownValue,
-          icon: const Icon(Icons.arrow_drop_down_rounded,),
-          iconEnabledColor: AppColors.textFieldColor,
-          iconSize: 24,
-          
-          onChanged: (String? value){
-            if (value != null) {
-             widget.onChanged(value);
-            }
-            setState(() {
-              dropdownValue=value!;
-            });
-          },
-          items: widget.currencies.names.entries.map((entry) {
-            return DropdownMenuItem<String>(
-              value: entry.key,
-              child: Text(entry.key,
-              style: TextStyle(
-                color: AppColors.textFieldColor,
-                fontSize: 16,
-                fontWeight: FontWeight.w500
-              ),),
-            );
-          }).toList(),  
+    return DropdownButtonHideUnderline(
+      child: DropdownButton(
+            value: dropdownValue,
+            icon: const Icon(Icons.arrow_drop_down_rounded,),
+            iconEnabledColor: AppColors.textFieldColor,
+            iconSize: 24,
+            elevation: 0,
+        
+            onChanged: (String? value){
+              if (value != null) {
+               widget.onChanged(value);
+              }
+              setState(() {
+                dropdownValue=value!;
+              });
+            },
+            items: widget.currencies.names.entries.map((entry) {
+              return DropdownMenuItem<String>(
+                value: entry.key,
+                child: Text(entry.key,
+                style: TextStyle(
+                  color: AppColors.textFieldColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500
+                ),),
+              );
+            }).toList(),  
+      ),
     );
   }
 }

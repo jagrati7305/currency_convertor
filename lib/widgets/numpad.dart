@@ -15,7 +15,15 @@ class Numpad extends StatelessWidget {
       height: Dimension.heightFactor*410,
       decoration: BoxDecoration(
         color: AppColors.mainPurpleColor,
-        borderRadius: BorderRadius.all(Radius.circular(8))
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        boxShadow:[
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.4),
+            blurRadius: 8,
+            spreadRadius: -5,
+            offset: Offset(0, 4)
+          )
+        ]
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
