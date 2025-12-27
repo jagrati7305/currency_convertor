@@ -20,8 +20,13 @@ class _CurvertorMainPageState extends State<CurvertorMainPage> {
   
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<CurrencyNames>(
-      future: widget.currenciesFuture, 
+    return FutureBuilder<List<dynamic>>(
+      future: Future.wait(
+        [
+          widget.currenciesFuture,
+          widget.rateFuture
+        ]
+      ),
       builder: (context,snapshot){
         if(snapshot.connectionState==ConnectionState.waiting){
           return const Scaffold(
@@ -34,40 +39,20 @@ class _CurvertorMainPageState extends State<CurvertorMainPage> {
         if(snapshot.hasError){
           return const Scaffold(
             body: Center(
-              child: Text('Error Loading Currencies'),
+              child: Text('Error Loading State'),
             ),
           );
         }
 
-        final currencies = snapshot.data!;
-
-      return FutureBuilder(
-        future: widget.rateFuture,
-      builder: (context,snapshot){
-        if(snapshot.connectionState==ConnectionState.waiting){
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              )
-            );
-          }
-
-        if(snapshot.hasError){
-          return const Scaffold(
-            body: Center(
-              child: Text('Error Loading Currencies'),
-            ),
-          );
-        }
-
-        final rate = snapshot.data!; 
+      final currencies = snapshot.data![0] as CurrencyNames;
+      final rate = snapshot.data![1] as ExchangeRateModel;
         
         return Scaffold(
           appBar: AppBar(
               title: Text(
               'CURVERTOR',
               style: TextStyle(
-              color: AppColors.orangeColor,
+              color: AppColors.textFieldColor,
               fontWeight: FontWeight.w700,
               fontSize: Dimension.heightFactor*24),
               ),
@@ -77,7 +62,6 @@ class _CurvertorMainPageState extends State<CurvertorMainPage> {
           body:HomePage(allcurrencies: currencies,rateChange: rate,),
         backgroundColor: AppColors.backgroundColor,
     );
-      });
       });
   }
 }

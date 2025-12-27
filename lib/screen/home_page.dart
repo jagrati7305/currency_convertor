@@ -1,10 +1,10 @@
 import 'package:currency_convertor/constants/dimension.dart';
+import 'package:currency_convertor/functions/conversion_logic.dart';
 import 'package:currency_convertor/models/currency_name.dart';
 import 'package:currency_convertor/models/currency_rate.dart';
 import 'package:currency_convertor/widgets/convert_btn.dart';
 import 'package:currency_convertor/widgets/convert_text_field.dart';
 import 'package:currency_convertor/widgets/numpad.dart';
-import 'package:currency_convertor/widgets/round_converting_btn.dart';
 import 'package:flutter/material.dart';
 
 enum ActiveField {
@@ -43,9 +43,7 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: Dimension.heightFactor*8,
         ),
-        Stack(
-          children:[ 
-            Column(
+        Column(
               children: [
                 ConvertTextField(textFieldcontroller: fromtextController,
                   onTap: () {
@@ -61,15 +59,19 @@ class _HomePageState extends State<HomePage> {
               },dropdownCurrencies:widget.allcurrencies,),
               ],
             ),
-            Positioned(
-              top: Dimension.heightFactor*95,
-              left: Dimension.widthFactor*203,
-              child: RoundConvertingBtn())
-        ]),
         SizedBox(
           height: Dimension.heightFactor*24,
         ),
-        ConvertBtn(rateChangedata:widget.rateChange,),
+        ConvertBtn(rateChangedata:widget.rateChange,onTap: (){
+          setState(() {
+            totextController.text = conversion(
+              widget.rateChange,
+              'INR',
+              'USD',
+            fromtextController.text,
+        );
+        });
+        }),
          SizedBox(
           height: Dimension.heightFactor*24,
         ),

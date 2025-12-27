@@ -11,5 +11,6 @@ String conversion(ExchangeRateModel rateExchange, String baseCountry ,String toC
   }
 
   final double result = (double.parse(amount)/baseRate)*toRate;
+  print(result.toString());
   return result.toStringAsFixed(4);
 }

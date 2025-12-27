@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Center(
                   child: Icon(
                     Icons.currency_exchange,
-                    color: AppColors.orangeColor,
+                    color: AppColors.textFieldColor,
                     size: Dimension.widthFactor*45,
                   ),
                 ),
@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Text(
                 'CURVERTOR',
                 style: TextStyle(
-                  color: AppColors.mainPurpleColor,
+                  color: AppColors.textFieldColor,
                   fontSize: Dimension.heightFactor*24,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.5

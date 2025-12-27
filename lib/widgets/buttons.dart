@@ -60,20 +60,20 @@ class _ButtonsState extends State<Buttons> {
       borderRadius:BorderRadius.circular(100) ,
       child: Material(
         borderRadius: BorderRadius.circular(100),
-          color: AppColors.orangeColor,
+          color: AppColors.textFieldColor,
           elevation: 2,
           child: CircleAvatar(
             radius: Dimension.heightFactor*40,
-            backgroundColor: AppColors.orangeColor,
+            backgroundColor: AppColors.textFieldColor,
             child: widget.icon==null?Text(
               widget.val,
               style: TextStyle(
                 fontSize: Dimension.heightFactor*28,
                 fontWeight: FontWeight.bold,
-                color: AppColors.mainPurpleColor
+                color: AppColors.backgroundColor
               ),):Icon(
                 widget.icon,
-                color: AppColors.mainPurpleColor,
+                color: AppColors.backgroundColor,
                 size: widget.iconSize,)
           ),
       ),
