@@ -9,7 +9,7 @@ class ConvertTextField extends StatefulWidget {
   final TextEditingController textFieldcontroller;
   final VoidCallback onTap;
   final CurrencyNames dropdownCurrencies;
-  final String label;
+  final String label; // from and to
   final String dropdownLabel;
   final ValueChanged<String> onCurrencyChanged;
 
@@ -125,18 +125,32 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
                   color: AppColors.backgroundColor,
                   borderRadius: BorderRadius.all(Radius.circular(2))
                 ),
-                child: Dropdown(
-                  currencies:widget.dropdownCurrencies,
-                  selectedCountry: selectedDropdown,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedDropdown = value;
-                    });
-                  widget.onCurrencyChanged(value); // 
-                  },),
-              )
+                  child: Dropdown(
+                      currencies:widget.dropdownCurrencies,
+                      selectedCountry: selectedDropdown,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedDropdown = value;
+                        });
+                      widget.onCurrencyChanged(value); // 
+                      },)
+              ),
             ],
           ),
+        Container(
+          padding: EdgeInsets.only(top: Dimension.heightFactor*2,bottom:Dimension.heightFactor*2,),
+          width:Dimension.widthFactor*310,
+          child: Align(
+            alignment: AlignmentGeometry.topRight,
+            child: Text(
+              widget.dropdownCurrencies.names[selectedDropdown].toString(),
+                style: TextStyle(
+                 fontSize:Dimension.heightFactor*12,
+                 color: AppColors.textFieldColor,
+                 fontWeight: FontWeight.w500
+              ),),
+                        ),
+        )
         ],
       ),
     );
