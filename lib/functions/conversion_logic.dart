@@ -24,5 +24,5 @@ String conversion(ExchangeRateModel rateExchange, String baseCountry ,String toC
   }
 
   final double result = (double.parse(amount)/baseRate)*toRate;
-  return result.toStringAsFixed(2);
+  return result.toStringAsFixed(4);
 }
