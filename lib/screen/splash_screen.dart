@@ -67,11 +67,12 @@ class _SplashScreenState extends State<SplashScreen> {
                         ]
                       ),
                       child: Center(
-                        child: Icon(
-                          Icons.currency_exchange,
-                          color: AppColors.textFieldColor,
-                          size: size/2,
-                        ),
+                        child: Image.asset(
+                          'assets/app_logo.png',
+                            width: size/1.75,
+                            height: size/1.75,
+                            fit: BoxFit.cover,
+                        )
                       ),
                     ),
                     Text(
