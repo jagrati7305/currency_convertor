@@ -12,6 +12,8 @@ class ConvertTextField extends StatefulWidget {
   final String label; // from and to
   final String dropdownLabel;
   final ValueChanged<String> onCurrencyChanged;
+  final bool readOnly;
+  final String hintText;
 
   const ConvertTextField({
     super.key,
@@ -20,7 +22,9 @@ class ConvertTextField extends StatefulWidget {
     required this.dropdownCurrencies,
     required this.label,
     required this.dropdownLabel,
-    required this.onCurrencyChanged});
+    required this.onCurrencyChanged,
+    this.readOnly = false,
+    required this.hintText});
 
   @override
   State<ConvertTextField> createState() => _ConvertTextFieldState();
@@ -94,6 +98,7 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
                     borderRadius: BorderRadius.all(Radius.circular(2))
                   ),
                   child: TextField(
+                    readOnly: widget.readOnly,
                       onTap: widget.onTap,
                       controller: widget.textFieldcontroller,
                       keyboardType: TextInputType.none,
@@ -103,11 +108,12 @@ class _ConvertTextFieldState extends State<ConvertTextField> {
                         fontWeight: FontWeight.w500
                       ),
                       decoration: InputDecoration(
-                        hintText: 'Value',
+                        hintText: widget.hintText,
                         hintStyle: TextStyle(
-                          fontSize: 16,
-                          color: AppColors.textFieldColor,
-                          fontWeight: FontWeight.w500
+                          fontSize: 15,
+                          color: AppColors.textFieldColor.withAlpha(120),
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic
                         ),
                         contentPadding:EdgeInsets.fromLTRB(8, 0, 16, 0),
                         focusedBorder: OutlineInputBorder(

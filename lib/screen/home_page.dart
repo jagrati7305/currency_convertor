@@ -60,7 +60,8 @@ class _HomePageState extends State<HomePage> {
                 onCurrencyChanged: (value) {
                   setState(() {
                   fromCountry = value;
-                });}),
+                });},
+                hintText: 'Enter Amount',),
               ConvertTextField(textFieldcontroller: totextController,
                 onTap: () {
                   setState(() {
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
               onCurrencyChanged: (value) {
                   setState(() {
                   toCountry = value;
-                });}),
+                });},readOnly: true,hintText: 'Answer',),
               ],
             ),
 
@@ -82,7 +83,8 @@ class _HomePageState extends State<HomePage> {
         ConvertBtn(rateChangedata:widget.rateChange,onTap: (){
           setState(() {
             if(fromtextController.text.isEmpty){
-                totextController.text = "0.0000";
+                totextController.text = '';
+                fromtextController.text='';
                 return;
             }     
             totextController.text = conversion(
